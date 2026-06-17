@@ -1,0 +1,20 @@
+{
+  "name": "yt-music-node",
+  "version": "1.0.0",
+  "description": "Node implementation of ytmusicapi python package.",
+  "homepage": "https://github.com/shencan03/yt-music-node#readme",
+  "bugs": {
+    "url": "https://github.com/shencan03/yt-music-node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shencan03/yt-music-node.git"
+  },
+  "license": "ISC",
+  "author": "shencan03",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
