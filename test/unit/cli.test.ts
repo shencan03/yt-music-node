@@ -153,4 +153,49 @@ describe("cli", () => {
     expect(anchorFor(new YTMusicServerError("x", { status: 403 }))).toBe("signed-out-or-expired-session");
     expect(anchorFor(new YTMusicServerError("x", { status: 500 }))).toBe("other-errors");
   });
+
+  describe.skipIf(process.platform === "win32")("browser from a terminal", () => {
+    function tty(chunks: string[]) {
+      const input = Object.assign(new PassThrough(), { isTTY: true, rawModes: [] as boolean[] }) as PassThrough & {
+        isTTY: true;
+        rawModes: boolean[];
+        setRawMode(mode: boolean): void;
+      };
+      input.setRawMode = (mode: boolean) => void input.rawModes.push(mode);
+      setImmediate(() => chunks.forEach((chunk) => input.write(chunk)));
+      return input;
+    }
+
+    async function runTty(argv: string[], chunks: string[]) {
+      const input = tty(chunks);
+      const output = new PassThrough();
+      let text = "";
+      output.on("data", (chunk) => (text += chunk));
+      const code = await main(argv, { input, output });
+      return { code, text, rawModes: input.rawModes };
+    }
+
+    it("reads lines longer than the 1024-byte terminal limit in raw mode", async () => {
+      const file = join(await mkdtemp(join(tmpdir(), "ytm-cli-")), "browser.json");
+      const cookie = `__Secure-3PAPISID=abc; PAD=${"x".repeat(5000)}`;
+      const pasted = `\x1b[200~x-goog-authuser: 0\rcookie: ${cookie}\r\x1b[201~`;
+      const { code, text, rawModes } = await runTty(["browser", "--file", file], [pasted.slice(0, 700), pasted.slice(700), "\u0004"]);
+      expect(code).toBe(0);
+      expect(rawModes).toEqual([true, false]);
+      expect(text).toContain("2 lines received");
+      expect(text).not.toContain("PAD=");
+      const saved = JSON.parse(await readFile(file, "utf8"));
+      expect(saved.cookie).toBe(cookie);
+      expect(saved["x-goog-authuser"]).toBe("0");
+    });
+
+    it("cancels on Ctrl-C without writing a file", async () => {
+      const file = join(await mkdtemp(join(tmpdir(), "ytm-cli-")), "browser.json");
+      const { code, text, rawModes } = await runTty(["browser", "--file", file], ["cookie: a", "\u0003"]);
+      expect(code).toBe(130);
+      expect(text).toContain("Cancelled.");
+      expect(rawModes).toEqual([true, false]);
+      await expect(stat(file)).rejects.toThrow();
+    });
+  });
 });
