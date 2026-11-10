@@ -45,7 +45,7 @@ await ytm.search("beatles", { filter: "albums", signal: AbortSignal.timeout(5_00
 Library, playlist editing, ratings, history and uploads need an account. Save request headers from your browser once, check them, and load them:
 
 ```sh
-npx yt-music-node browser   # paste request headers copied from your browser
+pbpaste | npx yt-music-node browser   # macOS; see the auth guide for other systems
 npx yt-music-node verify    # ✓ browser auth works: signed in as …
 ```
 

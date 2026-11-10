@@ -25,7 +25,7 @@ npx yt-music-node browser                         # writes ./browser.json
 npx yt-music-node browser --file ~/.config/ytm.json
 ```
 
-Paste the headers and press <kbd>Ctrl</kbd>+<kbd>D</kbd> (<kbd>Ctrl</kbd>+<kbd>Z</kbd>, <kbd>Enter</kbd> on Windows). Or pipe them in:
+Pipe the copied headers in from the clipboard:
 
 ```sh
 pbpaste | npx yt-music-node browser                              # macOS
@@ -33,6 +33,8 @@ wl-paste | npx yt-music-node browser                             # Linux (Waylan
 xclip -o -selection clipboard | npx yt-music-node browser        # Linux (X11)
 Get-Clipboard | npx yt-music-node browser                        # Windows PowerShell
 ```
+
+On Linux and Windows you can instead paste the headers at the prompt and press <kbd>Ctrl</kbd>+<kbd>D</kbd> (<kbd>Ctrl</kbd>+<kbd>Z</kbd>, <kbd>Enter</kbd> on Windows). On macOS, always use `pbpaste |`: macOS terminals cut each pasted line off at 1024 bytes, which truncates the `cookie` header.
 
 The command:
 
