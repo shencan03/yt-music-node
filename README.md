@@ -80,7 +80,7 @@ npm run docs:dev    # the documentation site
 npm run build
 ```
 
-See [contributing](https://shencan03.github.io/yt-music-node/contributing/) for the layout, the test suites and how to sync with upstream.
+Changes go through pull requests reviewed by a maintainer; see [CONTRIBUTING.md](CONTRIBUTING.md). The [contributing guide](https://shencan03.github.io/yt-music-node/contributing/) covers the layout, the test suites and how to sync with upstream.
 
 ## Disclaimer
 

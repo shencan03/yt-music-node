@@ -1,5 +1,7 @@
 # Development
 
+Every change to `main` goes through a pull request that follows this guide. A maintainer reviews and merges it.
+
 ## Setup
 
 ```sh
@@ -57,6 +59,27 @@ Endpoint methods are plain objects of functions typed with `this: ClientContext`
 - **Writes are never retried.** Pass `retry: false` for any request that changes state.
 - **Every public export has TSDoc.** TypeDoc fails the docs build otherwise.
 - **Commit messages** describe the change and the reason for it.
+
+## Pull requests
+
+All changes reach `main` through pull requests, including changes by maintainers. Nobody pushes to `main` directly.
+
+1. **Branch from `main`.** Use a short descriptive name, e.g. `fix/playlist-views` or `docs/auth-guide`.
+2. **Run the checks** before you push:
+   - `npm run check` for every change
+   - `npm run docs:check` when you change `docs/`, public types or TSDoc
+   - `npm run test:live` when you change a parser or an endpoint
+3. **Open the pull request** and fill in the template: what changed, why, and how you tested it.
+4. **CI must pass.** The CI and Docs workflows run on every pull request.
+5. **A maintainer approves and merges.** Only maintainers can merge. Their review covers the [conventions](#conventions) above. A pull request that changes behavior also updates the docs and, for user-visible changes, `CHANGELOG.md`.
+
+### Maintainers
+
+Maintainers review and merge pull requests. They are listed in [`.github/CODEOWNERS`](https://github.com/shencan03/yt-music-node/blob/main/.github/CODEOWNERS), which GitHub uses to request their review automatically.
+
+| Maintainer | GitHub |
+|---|---|
+| shencan03 | [`shencan03`](https://github.com/shencan03) |
 
 ## Reporting a broken method
 
