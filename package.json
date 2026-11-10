@@ -1,7 +1,7 @@
 {
   "name": "yt-music-node",
   "version": "0.1.0",
-  "description": "Unofficial YouTube Music API for Node.js \u2014 a TypeScript port of the ytmusicapi Python package.",
+  "description": "Unofficial YouTube Music API for Node.js — a TypeScript port of the ytmusicapi Python package.",
   "keywords": [
     "youtube",
     "youtube-music",
@@ -28,7 +28,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "yt-music-node": "./bin/yt-music-node.js"
+    "yt-music-node": "bin/yt-music-node.js"
   },
   "exports": {
     ".": {
