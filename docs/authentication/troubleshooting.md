@@ -17,7 +17,7 @@ The pasted text isn't the request headers of a signed-in YouTube Music request.
 - **You copied the wrong request.** Pick a `POST` request to `browse` on `music.youtube.com`, not a request to another domain or a `GET` for an image or script. See [step 3](/authentication/browser#_3-find-a-browse-request).
 - **You aren't signed in** in that tab. Sign in and copy again.
 - **Only `x-goog-authuser` is missing.** Some requests don't carry it. Click **Library** and copy that `browse` request.
-- **The paste was cut off.** On macOS this always happens when you paste into the terminal: macOS cuts each pasted line off at 1024 bytes, and the `cookie` line is longer. Pipe the clipboard instead: `pbpaste | npx yt-music-node browser` (see [step 5](/authentication/browser#_5-save-it-with-the-cli)). The same truncation can also show up as [Cookie is missing __Secure-3PAPISID](#cookie-is-missing-secure-3papisid) or a file that `verify` reports as [signed out](#signed-out-or-expired-session).
+- **The paste was cut off.** With yt-music-node 0.1.0 on macOS this happens whenever you paste into the terminal: macOS cuts each pasted line off at 1024 bytes, and the `cookie` line is longer. Update to 0.1.1 or later, or pipe the clipboard instead: `pbpaste | npx yt-music-node browser` (see [step 5](/authentication/browser#_5-save-it-with-the-cli)). The same truncation can also show up as [Cookie is missing __Secure-3PAPISID](#cookie-is-missing-secure-3papisid) or a file that `verify` reports as [signed out](#signed-out-or-expired-session).
 
 ## Cookie is missing __Secure-3PAPISID
 
@@ -25,7 +25,7 @@ The pasted text isn't the request headers of a signed-in YouTube Music request.
 Your cookie is missing the required value __Secure-3PAPISID
 ```
 
-The `cookie` header has no `SAPISID`-type value, which is needed to compute the authorization header. This usually means the headers came from a signed-out tab, a privacy extension stripped cookies, or, on macOS, the headers were pasted into the terminal and the long `cookie` line was cut off (use `pbpaste | npx yt-music-node browser`). Sign in, disable cookie-blocking extensions for music.youtube.com, and copy the headers again.
+The `cookie` header has no `SAPISID`-type value, which is needed to compute the authorization header. This usually means the headers came from a signed-out tab, a privacy extension stripped cookies, or, with 0.1.0 on macOS, the headers were pasted into the terminal and the long `cookie` line was cut off (update, or use `pbpaste | npx yt-music-node browser`). Sign in, disable cookie-blocking extensions for music.youtube.com, and copy the headers again.
 
 ## Could not determine the auth type
 
@@ -68,7 +68,7 @@ If it fails right after you created the file:
 - Make sure the tab was signed in to the account you expected, and that you didn't sign out afterwards.
 - If you closed a private window, that's fine, but don't sign out in it.
 - If you use several Google accounts, the [account index may point elsewhere](/authentication/multiple-accounts).
-- On macOS, if you pasted the headers into the terminal instead of using `pbpaste |`, the cookie was cut off. Create the file again with `pbpaste | npx yt-music-node browser`.
+- With 0.1.0 on macOS, if you pasted the headers into the terminal instead of using `pbpaste |`, the cookie was cut off. Update to 0.1.1 or later and create the file again.
 
 ## The wrong account
 

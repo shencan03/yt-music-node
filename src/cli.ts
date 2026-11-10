@@ -75,13 +75,10 @@ export async function main(argv: string[], io: CliIO = { input: process.stdin, o
 
 async function browser(file: string, io: CliIO, print: (text: string) => void): Promise<number> {
   print(`Creating ${pathToFileURL(file).href} with your authentication credentials...`);
-  const rl = createInterface({ input: io.input, output: io.output, terminal: false });
   try {
     const eof = process.platform === "win32" ? "Ctrl-Z, Enter" : "Ctrl-D";
     print(`Please paste the request headers from Firefox or Chrome/Edge and press ${eof} to continue:`);
-    const lines: string[] = [];
-    for await (const line of rl) lines.push(line);
-    const content = parseBrowserHeaders(lines.join("\n"));
+    const content = parseBrowserHeaders(await readHeaders(io));
     // owner-only: the file holds account credentials
     await writeFile(file, `${JSON.stringify(content, null, 4)}\n`, { encoding: "utf8", mode: 0o600 });
     print(`Saved ${file}.`);
@@ -89,12 +86,71 @@ async function browser(file: string, io: CliIO, print: (text: string) => void): 
     print(`Use it with:   await YTMusic.fromAuthFile(${JSON.stringify(file)})`);
     return 0;
   } catch (error) {
+    if (error instanceof Cancelled) {
+      print("Cancelled.");
+      return 130;
+    }
     print(`Error: ${(error as Error).message}`);
     print(`See ${TROUBLESHOOTING}#${anchorFor(error)}`);
     return 1;
+  }
+}
+
+class Cancelled extends Error {}
+
+/** Reads the pasted headers until end of input. */
+async function readHeaders(io: CliIO): Promise<string> {
+  const input = io.input as NodeJS.ReadStream;
+  if (input.isTTY && typeof input.setRawMode === "function" && process.platform !== "win32") {
+    return readRaw(input, io.output);
+  }
+  const rl = createInterface({ input: io.input, output: io.output, terminal: false });
+  try {
+    const lines: string[] = [];
+    for await (const line of rl) lines.push(line);
+    return lines.join("\n");
   } finally {
     rl.close();
   }
+}
+
+/**
+ * Reads a terminal in raw mode. In the default (canonical) mode, macOS terminals cut each line
+ * off at 1024 bytes (Linux at 4096), which truncates the long `cookie` header. Raw mode has no
+ * line limit. The pasted text holds credentials, so it is not echoed; a line count is shown instead.
+ */
+function readRaw(input: NodeJS.ReadStream, output: NodeJS.WritableStream): Promise<string> {
+  return new Promise((resolve, reject) => {
+    let text = "";
+    let shown = -1;
+    const status = (final = false) => {
+      const lines = text.split(/\r\n?|\n/).filter((line) => line.trim()).length;
+      if (lines !== shown) output.write(`\r${lines} line${lines === 1 ? "" : "s"} received`);
+      shown = lines;
+      if (final && lines > 0) output.write("\n");
+    };
+    const finish = (error?: Error) => {
+      input.off("data", onData);
+      input.setRawMode(false);
+      input.pause();
+      status(true);
+      if (error) reject(error);
+      // drop bracketed-paste markers if the terminal sends them
+      else resolve(text.replaceAll("\x1b[200~", "").replaceAll("\x1b[201~", "").replace(/\r\n?/g, "\n"));
+    };
+    const onData = (chunk: Buffer | string) => {
+      for (const char of chunk.toString()) {
+        if (char === "\u0004") return finish(); // Ctrl-D
+        if (char === "\u0003") return finish(new Cancelled()); // Ctrl-C
+        if (char === "\u007f" || char === "\b") text = text.slice(0, -1);
+        else text += char;
+      }
+      status();
+    };
+    input.setRawMode(true);
+    input.on("data", onData);
+    input.resume();
+  });
 }
 
 async function verify(file: string, io: CliIO, print: (text: string) => void, quiet: boolean): Promise<number> {
