@@ -1,0 +1,157 @@
+{
+  "new_releases": [
+    {
+      "title": "Carry My Name Home",
+      "artists": [
+        {
+          "id": "UC_Zaf1SrVG9WWnz_0JQBKpg",
+          "name": "Ragal Ironbull"
+        }
+      ],
+      "browseId": "MPREb_EYRj1MU0q7H",
+      "audioPlaylistId": "OLAK5uy_mVAjr4Ie28vDBYHtctFyTZzTCpAw87Q8Q",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/euHaO47otTOkwbefejw7YOf9oRyxV_i8g5mYJ8xgF9cXY1ygJxtxkTd6XJyoz5MBnsH8xDuEUUxKnLRG=w226-h226-l90-rj",
+          "width": 226,
+          "height": 226
+        },
+        "… 1 more"
+      ],
+      "isExplicit": false,
+      "type": "Single"
+    },
+    {
+      "title": "Perfecth",
+      "artists": [
+        {
+          "id": "UCcYgNw9ne8v1cxcAD_sIOWQ",
+          "name": "Queens of the Stone Age"
+        }
+      ],
+      "browseId": "MPREb_1e4whXWc6mt",
+      "audioPlaylistId": "OLAK5uy_lretgzwPNmIDxz5H3ryUDePY_kZbM6F1U",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/TT8Je6hO0dQCQF_lcqLfn05TQrwSrhy7fCoIew4CKETChkOpWNw5hhTzA64S8YrMviWPr1SLNt8VIAlNnQ=w226-h226-l90-rj",
+          "width": 226,
+          "height": 226
+        },
+        "… 1 more"
+      ],
+      "isExplicit": true,
+      "type": "Album"
+    },
+    "… 22 more"
+  ],
+  "moods_and_genres": [
+    {
+      "title": "Autumn",
+      "params": "ggMPOg1uX3JBUDJTM2ZUUVJM"
+    },
+    {
+      "title": "Chill",
+      "params": "ggMPOg1uX1JOQWZFeDByc2Jm"
+    },
+    "… 38 more"
+  ],
+  "trending": {
+    "playlist": "VLOLAK5uy_nPQBmQpOIYYxuvYW4gIHsjgDqX9kc--Dg",
+    "items": [
+      {
+        "title": "MERO x Poizi - Olurmusun? [Official Video]",
+        "videoId": "ncDkosGdvRw",
+        "videoType": "MUSIC_VIDEO_TYPE_OMV",
+        "thumbnails": [
+          {
+            "url": "https://i.ytimg.com/vi/ncDkosGdvRw/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3mQeBe1O4k1TMGJOdebA8oGR4VxSA",
+            "width": 400,
+            "height": 225
+          }
+        ],
+        "isExplicit": false,
+        "playlistId": "OLAK5uy_nPQBmQpOIYYxuvYW4gIHsjgDqX9kc--Dg",
+        "artists": [
+          {
+            "name": "MERO",
+            "id": "UCeKMrU5GECquXiJl6tnTgPA"
+          }
+        ],
+        "views": "2.1M"
+      },
+      {
+        "title": "PROPAGANDA",
+        "videoId": "1abzMQhso9s",
+        "videoType": "MUSIC_VIDEO_TYPE_OMV",
+        "thumbnails": [
+          {
+            "url": "https://i.ytimg.com/vi/1abzMQhso9s/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3k-Kh29M283dEf4rpS7rCfxh3S7Vw",
+            "width": 400,
+            "height": 225
+          }
+        ],
+        "isExplicit": false,
+        "playlistId": "OLAK5uy_nPQBmQpOIYYxuvYW4gIHsjgDqX9kc--Dg",
+        "artists": [
+          {
+            "name": "Fler",
+            "id": "UCHOrIXuV6IFUS-cdHEwPYcg"
+          },
+          {
+            "name": "Sido",
+            "id": "UCgosMU69MpoCqhuS1JZj6Cw"
+          }
+        ],
+        "views": "1.2M"
+      },
+      "… 18 more"
+    ]
+  },
+  "new_videos": [
+    {
+      "title": "Vallenato Mix (Diomedes Diaz) | By Doze",
+      "videoId": "ccTMQmlge20",
+      "artists": [
+        {
+          "name": "Juancho Rois",
+          "id": "UCOefjMfqsBC7fZaalYP2Xfg"
+        },
+        {
+          "name": "Diomedes Díaz",
+          "id": "UCD-tJUeIeVFeTGstnnwRNGA"
+        }
+      ],
+      "playlistId": null,
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/ccTMQmlge20/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3lSRHcm9bCqcZn4odk6EQcEIDdBIQ",
+          "width": 400,
+          "height": 225
+        },
+        "… 1 more"
+      ],
+      "views": "22K"
+    },
+    {
+      "title": "Me Encanta",
+      "videoId": "GwyF-niH3Ew",
+      "artists": [
+        {
+          "name": "Cyril Kamer",
+          "id": "UCOYgNOTOxyBaTmvRFq-MMtg"
+        }
+      ],
+      "playlistId": null,
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/GwyF-niH3Ew/hqdefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCggAEOADGC0guwJIWg&rs=AMzJL3krq77cp0QorWmXmRmRAlMdJ0qioQ",
+          "width": 400,
+          "height": 225
+        },
+        "… 1 more"
+      ],
+      "views": "366K"
+    },
+    "… 22 more"
+  ]
+}

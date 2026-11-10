@@ -1,7 +1,15 @@
 {
   "name": "yt-music-node",
-  "version": "1.0.0",
-  "description": "Node implementation of ytmusicapi python package.",
+  "version": "0.1.0",
+  "description": "Unofficial YouTube Music API for Node.js \u2014 a TypeScript port of the ytmusicapi Python package.",
+  "keywords": [
+    "youtube",
+    "youtube-music",
+    "ytmusic",
+    "ytmusicapi",
+    "music",
+    "api"
+  ],
   "homepage": "https://github.com/shencan03/yt-music-node#readme",
   "bugs": {
     "url": "https://github.com/shencan03/yt-music-node/issues"
@@ -10,11 +18,70 @@
     "type": "git",
     "url": "git+https://github.com/shencan03/yt-music-node.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "shencan03",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "yt-music-node": "./bin/yt-music-node.js"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:live": "YTM_LIVE=1 vitest run test/live",
+    "coverage": "vitest run --coverage",
+    "i18n": "node scripts/po-to-ts.ts",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "prepublishOnly": "npm run check && npm run build",
+    "test:auth": "YTM_AUTH_FILE=test/.auth/browser.json vitest run test/live/auth --no-file-parallelism",
+    "docs:api": "typedoc",
+    "docs:examples": "node scripts/doc-examples.ts",
+    "docs:coverage": "node scripts/docs-coverage.ts",
+    "docs:dev": "npm run docs:api && vitepress dev docs",
+    "docs:build": "npm run docs:api && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:check": "npm run docs:api && node scripts/docs-coverage.ts --check && node scripts/docs-typecheck.ts && vitepress build docs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
+    "tsup": "^9.0.0",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-markdown": "^4.14.1",
+    "typedoc-vitepress-theme": "^1.1.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitepress": "^1.6.4",
+    "vitest": "^5.1.0"
   }
 }

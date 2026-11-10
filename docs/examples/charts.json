@@ -1,0 +1,99 @@
+{
+  "countries": {
+    "selected": {
+      "text": "United States"
+    },
+    "options": [
+      "DE",
+      "ZZ",
+      "… 67 more"
+    ]
+  },
+  "videos": [
+    {
+      "title": "Top 100 Live Performances - United States",
+      "playlistId": "PL4fGSI1pDJn4yCNzulPkUbxgr4pl0gmI-",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/kdhOIOydZfUnlYWsRbXlUqWsap9lICZJMVlVSogOWxviJMJ8L_B5sl-3QVkgKf9zQFYiR3BS-Yhy=s192",
+          "width": 192,
+          "height": 192
+        },
+        "… 1 more"
+      ]
+    },
+    {
+      "title": "Trending 20 United States",
+      "playlistId": "OLAK5uy_kNWGJvgWVqlt5LsFDL9Sdluly4M8TvGkM",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/PYASkv9_AvZVTooUCU9iDysXcRAXzJeyH-l7Kpie7RmeoKvUe0JfXLawdKZQLvx9TTk7hrgwyPNu=s192",
+          "width": 192,
+          "height": 192
+        },
+        "… 1 more"
+      ]
+    },
+    "… 2 more"
+  ],
+  "genres": [
+    {
+      "title": "Top 50 Jazz Music Videos United States",
+      "playlistId": "PL4fGSI1pDJn7Wkr6Ll6ds1AhA42rT8uaU",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/z4nZ6Be563WkKyx2gCDu7ZZpJg7fLrxlalrTEORaHrRAtZYMGTeCcX-7GtAEZroibOURzX5itIM=s192",
+          "width": 192,
+          "height": 192
+        },
+        "… 1 more"
+      ]
+    },
+    {
+      "title": "Top 50 Rock Music Videos United States",
+      "playlistId": "PL4fGSI1pDJn5LOptOQixqnzXNGjNXAgYY",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/sJYSHoAzBX8KH80-EFBfOwiKy3PzQ73cH41LIa3ZTuIUWBXE-Naz7fahzHycbH5g4JHq5V4sHGI=s192",
+          "width": 192,
+          "height": 192
+        },
+        "… 1 more"
+      ]
+    },
+    "… 6 more"
+  ],
+  "artists": [
+    {
+      "title": "YoungBoy Never Broke Again",
+      "browseId": "UCR28YDxjDE3ogQROaNdnRbQ",
+      "subscribers": "15.8M",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/Gn429K9WtTL6JcxQ3IKtY_pxlt8kk1MwXhhEp0_GhimPo9-lpmzuvcJcIKpNPN1gAda7pfcW=w60-h60-l90-rj",
+          "width": 60,
+          "height": 60
+        },
+        "… 1 more"
+      ],
+      "rank": "1",
+      "trend": "up"
+    },
+    {
+      "title": "Drake",
+      "browseId": "UCU6cE7pdJPc6DU2jSrKEsdQ",
+      "subscribers": "33.2M",
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/MxNjcRJ-uK4Xvx7u90IhEFLQM8x9LIGTA9VCKHq5U4Wn2jOgiWaMtg-qz329SIzqnCyhdCCB3MpdAGs=w60-h60-p-l90-rj",
+          "width": 60,
+          "height": 60
+        },
+        "… 1 more"
+      ],
+      "rank": "2",
+      "trend": "down"
+    },
+    "… 38 more"
+  ]
+}

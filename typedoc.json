@@ -1,0 +1,72 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/index.ts"
+  ],
+  "tsconfig": "tsconfig.json",
+  "out": "docs/reference",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme",
+    "./scripts/typedoc-plugin.mjs"
+  ],
+  "docsRoot": "docs",
+  "readme": "none",
+  "entryFileName": "index",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "sort": [
+    "source-order"
+  ],
+  "groupOrder": [
+    "Classes",
+    "Functions",
+    "Interfaces",
+    "Type Aliases",
+    "Variables",
+    "*"
+  ],
+  "sidebar": {
+    "autoConfiguration": true,
+    "format": "vitepress",
+    "pretty": true,
+    "collapsed": true
+  },
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "typeDeclarationFormat": "table",
+  "enumMembersFormat": "table",
+  "useCodeBlocks": true,
+  "expandObjects": false,
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "requiredToBeDocumented": [
+    "Class",
+    "Function",
+    "Method",
+    "Interface",
+    "TypeAlias",
+    "Variable",
+    "Accessor",
+    "Constructor"
+  ],
+  "intentionallyNotExported": [
+    "browsingMethods",
+    "exploreMethods",
+    "libraryMethods",
+    "playlistMethods",
+    "podcastMethods",
+    "searchMethods",
+    "uploadMethods",
+    "watchMethods"
+  ],
+  "treatWarningsAsErrors": true,
+  "logLevel": "Warn",
+  "disableSources": true
+}

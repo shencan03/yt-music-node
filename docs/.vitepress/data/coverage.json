@@ -1,0 +1,219 @@
+{
+  "request": [
+    "live (auth)",
+    "live",
+    "unit"
+  ],
+  "getHome": [
+    "live (auth)",
+    "live"
+  ],
+  "getArtist": [
+    "live (auth)",
+    "live",
+    "golden"
+  ],
+  "getArtistAlbums": [
+    "live"
+  ],
+  "getUser": [
+    "live"
+  ],
+  "getUserPlaylists": [
+    "live"
+  ],
+  "getUserVideos": [
+    "live"
+  ],
+  "getAlbumBrowseId": [
+    "live",
+    "golden"
+  ],
+  "getAlbum": [
+    "live (auth)",
+    "live",
+    "golden"
+  ],
+  "getSongCredits": [
+    "live"
+  ],
+  "getSong": [
+    "live (auth)",
+    "live"
+  ],
+  "getSongRelated": [
+    "live"
+  ],
+  "getLyrics": [
+    "live",
+    "unit"
+  ],
+  "getBasejsUrl": [
+    "live"
+  ],
+  "getSignatureTimestamp": [
+    "live"
+  ],
+  "getTasteProfile": [
+    "live (auth)"
+  ],
+  "setTasteProfile": [
+    "unit"
+  ],
+  "search": [
+    "live (auth)",
+    "live",
+    "unit"
+  ],
+  "getSearchSuggestions": [
+    "live (auth)",
+    "live"
+  ],
+  "removeSearchSuggestions": [
+    "live (auth)",
+    "unit"
+  ],
+  "getWatchPlaylist": [
+    "live (auth)",
+    "live"
+  ],
+  "getMoodCategories": [
+    "live"
+  ],
+  "getMoodPlaylists": [
+    "live"
+  ],
+  "getExplore": [
+    "live",
+    "golden"
+  ],
+  "getCharts": [
+    "live",
+    "golden"
+  ],
+  "getLibraryPlaylists": [
+    "live (auth)",
+    "live"
+  ],
+  "getLibrarySongs": [
+    "live (auth)",
+    "unit"
+  ],
+  "getLibraryAlbums": [
+    "live (auth)",
+    "unit"
+  ],
+  "getLibraryArtists": [
+    "live (auth)"
+  ],
+  "getLibrarySubscriptions": [
+    "live (auth)"
+  ],
+  "getLibraryPodcasts": [
+    "live (auth)"
+  ],
+  "getLibraryChannels": [
+    "live (auth)"
+  ],
+  "getHistory": [
+    "live (auth)"
+  ],
+  "addHistoryItem": [
+    "live (auth)"
+  ],
+  "removeHistoryItems": [
+    "live (auth)"
+  ],
+  "rateSong": [
+    "live (auth)",
+    "unit"
+  ],
+  "editSongLibraryStatus": [
+    "live (auth)"
+  ],
+  "ratePlaylist": [
+    "live (auth)"
+  ],
+  "subscribeArtist": [
+    "live (auth)"
+  ],
+  "unsubscribeArtists": [
+    "live (auth)"
+  ],
+  "getAccountInfo": [
+    "live (auth)"
+  ],
+  "getPlaylist": [
+    "live (auth)",
+    "live",
+    "golden"
+  ],
+  "getLikedSongs": [
+    "live (auth)"
+  ],
+  "getSavedEpisodes": [
+    "live (auth)",
+    "unit"
+  ],
+  "createPlaylist": [
+    "live (auth)",
+    "unit"
+  ],
+  "joinCollaborativePlaylist": [
+    "unit"
+  ],
+  "editPlaylist": [
+    "live (auth)"
+  ],
+  "deletePlaylist": [
+    "live (auth)",
+    "unit"
+  ],
+  "addPlaylistItems": [
+    "live (auth)",
+    "unit"
+  ],
+  "removePlaylistItems": [
+    "live (auth)"
+  ],
+  "getChannel": [
+    "live"
+  ],
+  "getChannelEpisodes": [
+    "live"
+  ],
+  "getPodcast": [
+    "live"
+  ],
+  "getEpisode": [
+    "live"
+  ],
+  "getEpisodesPlaylist": [
+    "live (auth)",
+    "unit"
+  ],
+  "getLibraryUploadSongs": [
+    "live (auth)"
+  ],
+  "getLibraryUploadAlbums": [
+    "live (auth)"
+  ],
+  "getLibraryUploadArtists": [
+    "live (auth)"
+  ],
+  "getLibraryUploadArtist": [
+    "live (auth)"
+  ],
+  "getLibraryUploadAlbum": [
+    "live (auth)"
+  ],
+  "uploadSong": [
+    "live (auth)",
+    "live",
+    "unit"
+  ],
+  "deleteUploadEntity": [
+    "live (auth)",
+    "unit"
+  ]
+}

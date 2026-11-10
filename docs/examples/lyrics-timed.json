@@ -1,0 +1,25 @@
+{
+  "lyrics": [
+    {
+      "text": "Line 1",
+      "start_time": 0,
+      "end_time": 22150,
+      "id": 0
+    },
+    {
+      "text": "Line 2",
+      "start_time": 22150,
+      "end_time": 24420,
+      "id": 1
+    },
+    {
+      "text": "Line 3",
+      "start_time": 24420,
+      "end_time": 27730,
+      "id": 2
+    },
+    "… 37 more"
+  ],
+  "source": "Source: LyricFind",
+  "hasTimestamps": true
+}

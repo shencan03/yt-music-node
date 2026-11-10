@@ -1,0 +1,36 @@
+name: Release
+
+# Publishes to npm when a version tag is pushed: `npm version patch && git push --follow-tags`.
+# Auth: npm trusted publishing (OIDC) once it is configured on npmjs.com for this repo and
+# workflow; until then, an `NPM_TOKEN` repository secret (granular token, publish rights).
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write # npm provenance + trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - name: Tag matches package.json version
+        run: |
+          version="v$(node -p 'require("./package.json").version')"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json $version" >&2
+            exit 1
+          fi
+      - run: npm ci
+      # prepublishOnly runs `npm run check && npm run build`
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

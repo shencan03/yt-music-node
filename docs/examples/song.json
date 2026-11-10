@@ -1,0 +1,192 @@
+{
+  "playabilityStatus": {
+    "status": "OK",
+    "playableInEmbed": true,
+    "audioOnlyPlayability": {
+      "audioOnlyPlayabilityRenderer": {
+        "trackingParams": "CA8Qx2kiEwiXwuy-hvuXAxUxg_QHHToSCNE=",
+        "audioOnlyAvailability": "FEATURE_AVAILABILITY_ALLOWED"
+      }
+    },
+    "miniplayer": {
+      "miniplayerRenderer": {
+        "playbackMode": "PLAYBACK_MODE_ALLOW"
+      }
+    },
+    "contextParams": "Q0FFU0FnZ0I="
+  },
+  "streamingData": "(stream formats, see the note above)",
+  "playbackTracking": {
+    "videostatsPlaybackUrl": {
+      "baseUrl": "https://s.youtube.com/api/stats/playback?cl=1015688510&docid=hpSrLjc5SMs&ei=WNLxape2D7GG0u8PuqSgiA0&fexp=&ns=yt&plid=AAZf2GfbTSc8n2bf&el=detailpage&len=259&of=w…",
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "videostatsDelayplayUrl": {
+      "baseUrl": "https://s.youtube.com/api/stats/delayplay?cl=1015688510&docid=hpSrLjc5SMs&ei=WNLxape2D7GG0u8PuqSgiA0&fexp=&ns=yt&plid=AAZf2GfbTSc8n2bf&el=detailpage&len=259&of=…",
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "videostatsWatchtimeUrl": {
+      "baseUrl": "https://s.youtube.com/api/stats/watchtime?cl=1015688510&docid=hpSrLjc5SMs&ei=WNLxape2D7GG0u8PuqSgiA0&fexp=&ns=yt&plid=AAZf2GfbTSc8n2bf&el=detailpage&len=259&of=…",
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "ptrackingUrl": {
+      "baseUrl": "https://www.youtube.com/ptracking?ei=WNLxape2D7GG0u8PuqSgiA0&oid=J8vAyKuNSYBIN_9RIdxggQ&plid=AAZf2GfbTSc8n2bf&pltype=content&ptchn=mMUZbaYdNH0bEd1PAlAqsA&ptk=yo…",
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "qoeUrl": {
+      "baseUrl": "https://s.youtube.com/api/stats/qoe?cl=1015688510&docid=hpSrLjc5SMs&ei=WNLxape2D7GG0u8PuqSgiA0&el=detailpage&event=streamingstats&fexp=&ns=yt&plid=AAZf2GfbTSc8n…",
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "atrUrl": {
+      "baseUrl": "https://s.youtube.com/api/stats/atr?c=WEB_REMIX&docid=hpSrLjc5SMs&ei=WNLxape2D7GG0u8PuqSgiA0&len=259&ns=yt&plid=AAZf2GfbTSc8n2bf&ver=2&vm=CAMQARgBOjJBSHFpSlRMR0…",
+      "elapsedMediaTimeSeconds": 5,
+      "headers": [
+        {
+          "headerType": "USER_AUTH"
+        },
+        {
+          "headerType": "VISITOR_ID"
+        },
+        "… 1 more"
+      ]
+    },
+    "videostatsScheduledFlushWalltimeSeconds": [
+      10,
+      20,
+      "… 1 more"
+    ],
+    "videostatsDefaultFlushIntervalSeconds": 40
+  },
+  "videoDetails": {
+    "videoId": "hpSrLjc5SMs",
+    "title": "Wonderwall",
+    "lengthSeconds": "259",
+    "channelId": "UCmMUZbaYdNH0bEd1PAlAqsA",
+    "isOwnerViewing": false,
+    "isCrawlable": true,
+    "thumbnail": {
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/SP0cN9Mypy_WeKEajm03ERYOU_53KkHZpu4EQpSJUzcQ1H_3HhS1FmjR34KTstf-0DX83JLCCj9ouc-k1g=w60-h60-l90-rj",
+          "width": 60,
+          "height": 60
+        },
+        "… 3 more"
+      ]
+    },
+    "allowRatings": true,
+    "viewCount": "101317729",
+    "author": "Oasis",
+    "isPrivate": false,
+    "isUnpluggedCorpus": false,
+    "musicVideoType": "MUSIC_VIDEO_TYPE_ATV",
+    "isLiveContent": false,
+    "isTvfilmVideo": false
+  },
+  "microformat": {
+    "microformatDataRenderer": {
+      "urlCanonical": "https://music.youtube.com/watch?v=hpSrLjc5SMs",
+      "title": "Wonderwall",
+      "description": "Oasis",
+      "thumbnail": {
+        "thumbnails": [
+          {
+            "url": "https://i.ytimg.com/vi/hpSrLjc5SMs/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        ]
+      },
+      "siteName": "YouTube Music",
+      "appName": "YouTube Music",
+      "androidPackage": "com.google.android.apps.youtube.music",
+      "iosAppStoreId": "1017492454",
+      "iosAppArguments": "https://music.youtube.com/watch?v=hpSrLjc5SMs",
+      "ogType": "video.other",
+      "urlApplinksIos": "vnd.youtube.music://music.youtube.com/watch?v=hpSrLjc5SMs&feature=applinks",
+      "urlApplinksAndroid": "vnd.youtube.music://music.youtube.com/watch?v=hpSrLjc5SMs&feature=applinks",
+      "urlTwitterIos": "vnd.youtube.music://music.youtube.com/watch?v=hpSrLjc5SMs&feature=twitter-deep-link",
+      "urlTwitterAndroid": "vnd.youtube.music://music.youtube.com/watch?v=hpSrLjc5SMs&feature=twitter-deep-link",
+      "twitterCardType": "summary",
+      "twitterSiteHandle": "@YouTubeMusic",
+      "schemaDotOrgType": "http://schema.org/VideoObject",
+      "noindex": false,
+      "unlisted": false,
+      "paid": false,
+      "familySafe": true,
+      "tags": [
+        "Oasis",
+        "Noel Gallagher",
+        "… 2 more"
+      ],
+      "availableCountries": [
+        "AE",
+        "AR",
+        "… 121 more"
+      ],
+      "pageOwnerDetails": {
+        "name": "Oasis - Topic",
+        "externalChannelId": "UCmMUZbaYdNH0bEd1PAlAqsA",
+        "youtubeProfileUrl": "http://www.youtube.com/channel/UCmMUZbaYdNH0bEd1PAlAqsA"
+      },
+      "videoDetails": {
+        "externalVideoId": "hpSrLjc5SMs",
+        "durationSeconds": "259",
+        "durationIso8601": "PT4M19S"
+      },
+      "linkAlternates": [
+        {
+          "hrefUrl": "android-app://com.google.android.youtube/http/youtube.com/watch?v=hpSrLjc5SMs"
+        },
+        {
+          "hrefUrl": "ios-app://544007664/http/youtube.com/watch?v=hpSrLjc5SMs"
+        },
+        "… 2 more"
+      ],
+      "viewCount": "101317729",
+      "publishDate": "2020-06-10T15:03:27-07:00",
+      "category": "Music",
+      "uploadDate": "2020-06-10T15:03:27-07:00"
+    }
+  }
+}

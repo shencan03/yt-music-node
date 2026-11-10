@@ -1,0 +1,93 @@
+[
+  {
+    "title": "Quick picks",
+    "contents": [
+      {
+        "title": "Ain't In LA",
+        "videoId": "nyNm-dVBMoo",
+        "videoType": "MUSIC_VIDEO_TYPE_ATV",
+        "thumbnails": [
+          {
+            "url": "https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w60-h60-l90-rj",
+            "width": 60,
+            "height": 60
+          },
+          "… 1 more"
+        ],
+        "isExplicit": true,
+        "artists": [
+          {
+            "name": "ADÉLA",
+            "id": "UC0tecxozlRzTMrqvShI8QWg"
+          }
+        ],
+        "views": "112M",
+        "album": {
+          "name": "PRIMA",
+          "id": "MPREb_BtXfAQVI3yJ"
+        }
+      },
+      {
+        "title": "Runaway",
+        "videoId": "BRpS93I8_Jk",
+        "videoType": "MUSIC_VIDEO_TYPE_ATV",
+        "thumbnails": [
+          {
+            "url": "https://yt3.googleusercontent.com/kIwl8AI9uJKWZbi05Eq90lPJ39kjob0C72GYmN7lAArGVfCdTTySQ5k0sHSUPYU86DPimf-rblS03qTI0g=w60-h60-l90-rj",
+            "width": 60,
+            "height": 60
+          },
+          "… 1 more"
+        ],
+        "isExplicit": false,
+        "artists": [
+          {
+            "name": "AURORA",
+            "id": "UC4G-AJa7kn8oumI6TT2WXYw"
+          }
+        ],
+        "views": "1.2B",
+        "album": {
+          "name": "Running With The Wolves (EP)",
+          "id": "MPREb_8uimRxKr23y"
+        }
+      },
+      "… 18 more"
+    ]
+  },
+  {
+    "title": "Throwback",
+    "contents": [
+      {
+        "title": "'80s Pop",
+        "playlistId": "RDCLAK5uy_k1Wu8QbZASiGVqr1wmie9NIYo38aBqscQ",
+        "thumbnails": [
+          {
+            "url": "https://yt3.googleusercontent.com/zcEHBRn_jSdT3KRb-i1ociI4xOAVqxZj_ct12X0oWneK-HUcY0WkJVyAJa0p9KNKmIUrKBjzPfTzrms=w226-h226-l90-rj",
+            "width": 226,
+            "height": 226
+          },
+          "… 1 more"
+        ],
+        "owned": false,
+        "description": "Madonna, Michael Jackson, George Michael, Prince"
+      },
+      {
+        "title": "Megahits: 80s",
+        "playlistId": "RDCLAK5uy_khNGopKCT_t38MZ1W7z4kERrqprkXovxo",
+        "thumbnails": [
+          {
+            "url": "https://yt3.googleusercontent.com/ht1Z7p5j0QniRISLhZZ4DvfnqT9bhJz18FDY6VYLLQIvlfOSFL4RgYJ4f3i57NBqXvGdkFz7OvoX2YY=w226-h226-l90-rj",
+            "width": 226,
+            "height": 226
+          },
+          "… 1 more"
+        ],
+        "owned": false,
+        "description": "Phil Collins, Falco, Herbert Grönemeyer, Madonna"
+      },
+      "… 8 more"
+    ]
+  },
+  "… 3 more"
+]

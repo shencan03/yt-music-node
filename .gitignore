@@ -1,0 +1,17 @@
+node_modules/
+dist/
+coverage/
+*.log
+.env
+browser.json
+
+# live-test credentials
+test/.auth/
+
+# docs: generated reference and VitePress output
+docs/reference/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# macOS
+.DS_Store

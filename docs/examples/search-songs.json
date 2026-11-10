@@ -1,0 +1,69 @@
+[
+  {
+    "category": "Songs",
+    "resultType": "song",
+    "title": "Wonderwall",
+    "album": {
+      "name": "(What's The Story) Morning Glory?",
+      "id": "MPREb_PITqkpE6ExP"
+    },
+    "inLibrary": false,
+    "pinnedToListenAgain": false,
+    "videoId": "hpSrLjc5SMs",
+    "videoType": "MUSIC_VIDEO_TYPE_ATV",
+    "isAvailable": true,
+    "duration": "4:19",
+    "year": null,
+    "artists": [
+      {
+        "name": "Oasis",
+        "id": "UCmMUZbaYdNH0bEd1PAlAqsA"
+      }
+    ],
+    "duration_seconds": 259,
+    "views": "1.7B",
+    "isExplicit": false,
+    "thumbnails": [
+      {
+        "url": "https://yt3.googleusercontent.com/SP0cN9Mypy_WeKEajm03ERYOU_53KkHZpu4EQpSJUzcQ1H_3HhS1FmjR34KTstf-0DX83JLCCj9ouc-k1g=w60-h60-l90-rj",
+        "width": 60,
+        "height": 60
+      },
+      "… 1 more"
+    ]
+  },
+  {
+    "category": "Songs",
+    "resultType": "song",
+    "title": "Hey Now!",
+    "album": {
+      "name": "(What's The Story) Morning Glory? (Deluxe Remastered Edition)",
+      "id": "MPREb_SmEdOAdN7en"
+    },
+    "inLibrary": false,
+    "pinnedToListenAgain": false,
+    "videoId": "5gHOjJYFzms",
+    "videoType": "MUSIC_VIDEO_TYPE_ATV",
+    "isAvailable": true,
+    "duration": "5:42",
+    "year": null,
+    "artists": [
+      {
+        "name": "Oasis",
+        "id": "UCmMUZbaYdNH0bEd1PAlAqsA"
+      }
+    ],
+    "duration_seconds": 342,
+    "views": "10M",
+    "isExplicit": false,
+    "thumbnails": [
+      {
+        "url": "https://yt3.googleusercontent.com/cJPWEK7Y4QJzQBRmWrhHAlxk9yKdZuh-zcEGoYlBY7CbpHq_9gTwON-3aMXjXxQvFtEuKl1on6EOWAE=w60-h60-l90-rj",
+        "width": 60,
+        "height": 60
+      },
+      "… 1 more"
+    ]
+  },
+  "… 18 more"
+]

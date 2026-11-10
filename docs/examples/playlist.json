@@ -1,0 +1,106 @@
+{
+  "owned": false,
+  "id": "PLQwVIlKxHM6qv-o99iX9R85og7IzF9YS_",
+  "privacy": "PUBLIC",
+  "description": "Weekly r/EDM new release roundup. Created with github.com/sigma67/spotifyplaylist_to_gmusic",
+  "views": 583,
+  "duration": "14 hours",
+  "trackCount": 236,
+  "title": "New EDM This Week 03/13/2020",
+  "thumbnails": [
+    {
+      "url": "https://yt3.ggpht.com/78zdTw8VldbNcEeiFRieTy90vKFxOKz43DpNs7ZeNcmi5rBd2C5mnQ3Q7HEXy77qcHZreAJJLJ9Q=s192",
+      "width": 192,
+      "height": 192
+    },
+    "… 2 more"
+  ],
+  "author": {
+    "name": "sigmatics",
+    "id": "UCp6MTZFuSqsqI-n9ftAJg3Q"
+  },
+  "year": "2021",
+  "related": [],
+  "tracks": [
+    {
+      "videoId": "ekz1IJ9I0sw",
+      "title": "Lost",
+      "artists": [
+        {
+          "name": "Guest Who",
+          "id": "UCkgCRdnnqWnUeIH7EIc3dBg"
+        },
+        {
+          "name": "Kate Wild",
+          "id": "UCwR2l3JfJbvB6aq0RnnJfWg"
+        }
+      ],
+      "album": {
+        "name": "Lost",
+        "id": "MPREb_PxmzvDuqOnC"
+      },
+      "likeStatus": "INDIFFERENT",
+      "inLibrary": false,
+      "pinnedToListenAgain": false,
+      "feedbackTokens": {
+        "add": null,
+        "remove": "AB9zfpI_ietf4-hV7AurRcNg3ltz7JmSkndLAytwdUGwdqmqjqUVktGQkTrbdZHYKqmZg3Wfa-3tDOhJLFZGFFBszk6WQEEhCA"
+      },
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/DYMztR5mPF2r-xc3qr2bCrVpCUVFilnWiFuZhZm3hy65OrJyQgwlKYejrU5sfWKLLPbem_m3xKXeZ_EiIw=w60-h60-l90-rj",
+          "width": 60,
+          "height": 60
+        },
+        "… 1 more"
+      ],
+      "isAvailable": true,
+      "isExplicit": false,
+      "videoType": "MUSIC_VIDEO_TYPE_ATV",
+      "views": null,
+      "communityVoteStatus": null,
+      "duration": "2:59",
+      "duration_seconds": 179,
+      "creditsBrowseId": "MPTCekz1IJ9I0sw"
+    },
+    {
+      "videoId": "un1WNXYplCE",
+      "title": "Something Comforting",
+      "artists": [
+        {
+          "name": "Porter Robinson",
+          "id": "UCUt2uP6O_UBJp4aBx5KjQjA"
+        }
+      ],
+      "album": {
+        "name": "Something Comforting",
+        "id": "MPREb_obUaJdPjhxC"
+      },
+      "likeStatus": "INDIFFERENT",
+      "inLibrary": false,
+      "pinnedToListenAgain": false,
+      "feedbackTokens": {
+        "add": null,
+        "remove": "AB9zfpIlrw628pTa4fYkNb8PG5S9Wjdu7YOjnwIxeQwKMl2LdottPOK6j_1LHBr18zAqkPFpmJMO4_i3SbHzEB7UcTz_gBkoBQ"
+      },
+      "thumbnails": [
+        {
+          "url": "https://yt3.googleusercontent.com/hzoJ-XjnQj1fIkE7M-VYlaVIk5dGEfIyvyG2P7OPB_UnyqA0hERfUniJ4uq57Y4NVOjmL0GGcb5yisMq=w60-h60-l90-rj",
+          "width": 60,
+          "height": 60
+        },
+        "… 1 more"
+      ],
+      "isAvailable": true,
+      "isExplicit": false,
+      "videoType": "MUSIC_VIDEO_TYPE_ATV",
+      "views": null,
+      "communityVoteStatus": null,
+      "duration": "4:42",
+      "duration_seconds": 282,
+      "creditsBrowseId": "MPTCun1WNXYplCE"
+    },
+    "… 98 more"
+  ],
+  "duration_seconds": 22248
+}

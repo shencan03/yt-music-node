@@ -1,0 +1,70 @@
+[
+  {
+    "category": "Top result",
+    "resultType": "artist",
+    "subscribers": "32M",
+    "artists": [
+      {
+        "name": "Oasis",
+        "id": "UCmMUZbaYdNH0bEd1PAlAqsA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "url": "https://yt3.googleusercontent.com/U5ierX4J6fdj6vlmiIjKKHQhYphsOYHBd43bJRao1T2qrojHb_xcPsnL-gprIEn_y900oPEZhp-iPXs=w60-h60-p-l90-rj",
+        "width": 60,
+        "height": 60
+      },
+      "… 1 more"
+    ]
+  },
+  {
+    "category": null,
+    "resultType": "song",
+    "title": "Wonderwall",
+    "album": null,
+    "inLibrary": false,
+    "pinnedToListenAgain": false,
+    "videoId": "hpSrLjc5SMs",
+    "videoType": "MUSIC_VIDEO_TYPE_ATV",
+    "isAvailable": true,
+    "duration": "4:19",
+    "year": null,
+    "duration_seconds": 259,
+    "views": "1.7B",
+    "isExplicit": false,
+    "thumbnails": [
+      {
+        "url": "https://yt3.googleusercontent.com/SP0cN9Mypy_WeKEajm03ERYOU_53KkHZpu4EQpSJUzcQ1H_3HhS1FmjR34KTstf-0DX83JLCCj9ouc-k1g=w60-h60-l90-rj",
+        "width": 60,
+        "height": 60
+      },
+      "… 1 more"
+    ]
+  },
+  {
+    "category": null,
+    "resultType": "song",
+    "title": "Bonehead's Bank Holiday",
+    "album": null,
+    "inLibrary": false,
+    "pinnedToListenAgain": false,
+    "videoId": "p56R-riyXKE",
+    "videoType": "MUSIC_VIDEO_TYPE_ATV",
+    "isAvailable": true,
+    "duration": "4:03",
+    "year": null,
+    "duration_seconds": 243,
+    "views": "3.8M",
+    "isExplicit": false,
+    "thumbnails": [
+      {
+        "url": "https://yt3.googleusercontent.com/cJPWEK7Y4QJzQBRmWrhHAlxk9yKdZuh-zcEGoYlBY7CbpHq_9gTwON-3aMXjXxQvFtEuKl1on6EOWAE=w60-h60-l90-rj",
+        "width": 60,
+        "height": 60
+      },
+      "… 1 more"
+    ]
+  },
+  "… 30 more"
+]
