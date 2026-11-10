@@ -94,7 +94,7 @@ const home = await ytm.getHome({ limit: 10, signal: AbortSignal.timeout(10_000) 
 Your library, playlists, ratings, history and uploads need an account. Save the request headers from your browser once:
 
 ```sh
-npx yt-music-node browser   # paste request headers from your browser
+pbpaste | npx yt-music-node browser   # macOS; see the auth guide for other systems
 npx yt-music-node verify    # ✓ browser auth works: signed in as …
 ```
 
