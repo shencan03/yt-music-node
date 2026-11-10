@@ -1,6 +1,6 @@
 {
   "name": "yt-music-node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial YouTube Music API for Node.js — a TypeScript port of the ytmusicapi Python package.",
   "keywords": [
     "youtube",

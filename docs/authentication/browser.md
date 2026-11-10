@@ -65,7 +65,20 @@ This text contains your session cookie. Paste it only into the CLI in the next s
 
 ## 5. Save it with the CLI
 
-In your project folder, pipe the clipboard into the command:
+In your project folder, run:
+
+```sh
+npx yt-music-node browser
+```
+
+Paste the headers, then finish the input:
+
+- macOS / Linux: press <kbd>Ctrl</kbd>+<kbd>D</kbd>
+- Windows: press <kbd>Enter</kbd>, then <kbd>Ctrl</kbd>+<kbd>Z</kbd>, then <kbd>Enter</kbd>
+
+On macOS and Linux the pasted text isn't shown, because it holds your cookie. A line count shows that it arrived.
+
+You can also pipe the clipboard into the command:
 
 ::: code-group
 
@@ -87,14 +100,9 @@ Get-Clipboard | npx yt-music-node browser
 
 :::
 
-::: warning On macOS, don't paste into the terminal
-macOS limits a line typed or pasted into a terminal to 1024 bytes and silently cuts off the rest. The `cookie:` line is longer than that, so a pasted cookie arrives truncated and the CLI rejects it or saves a session that doesn't sign in. Use `pbpaste |` as shown above. This affects Terminal, iTerm2 and other macOS terminals alike.
+::: warning yt-music-node 0.1.0 on macOS: pipe, don't paste
+macOS terminals cut each pasted line off at 1024 bytes, and the `cookie:` line is longer. Version 0.1.0 read the paste as normal terminal input, so the paste hung or the cookie was cut off. Version 0.1.1 and later read the terminal in raw mode, which has no line limit. On 0.1.0, use `pbpaste |` as shown above, or update.
 :::
-
-On Linux and Windows you can also run `npx yt-music-node browser` on its own, paste the headers, then finish the input:
-
-- Linux: press <kbd>Enter</kbd>, then <kbd>Ctrl</kbd>+<kbd>D</kbd>
-- Windows: press <kbd>Enter</kbd>, then <kbd>Ctrl</kbd>+<kbd>Z</kbd>, then <kbd>Enter</kbd>
 
 The CLI checks the headers and writes `browser.json`, readable only by you:
 
