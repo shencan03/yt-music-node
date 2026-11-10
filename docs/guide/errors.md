@@ -1,4 +1,4 @@
-# Errors
+# Handling errors
 
 Every error the library throws extends `YTMusicError`. Catch the subclasses you can handle and let the rest propagate.
 
@@ -88,7 +88,7 @@ A response didn't have the structure a parser expected. This almost always means
 | `path` | the full path the parser followed |
 | `key` | the key that was missing |
 
-Please [report it](https://github.com/shencan03/yt-music-node/issues) with the method, its arguments and the message. A [recorded response](/guide/advanced#recording-responses) speeds up the fix a lot. The nightly live tests usually catch layout changes too.
+Please [report it](https://github.com/shencan03/yt-music-node/issues) with the method, its arguments and the message. A [recorded response](/guide/testing#record-real-responses) speeds up the fix a lot. The nightly live tests usually catch layout changes too.
 
 For signed-in calls, this error can also mean the session expired: YouTube then serves the signed-out layout. Run [`npx yt-music-node verify`](/guide/cli#verify) to check.
 

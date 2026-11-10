@@ -52,7 +52,7 @@ After porting, update the commit in this table (and in `UPSTREAM.md` in the repo
 - **Translate, don't redesign.** Keep functions, names (camelCased) and control flow close to upstream, so the next diff is easy to apply.
 - **Python semantics.** `if not x` is false for `[]` and `{}` in Python but not in JavaScript. `x in d` checks keys. `x[-1]` is the last item. Use the helpers in `src/parsers/py.ts` and `nav`'s negative indices.
 - **`None` → `null`.** `nav(…, true)` returns `null` like `nav(…, none_if_absent=True)`.
-- **Bugs.** If upstream has a bug, fix it here, add it to `PLAN.md`'s list and to the [migration guide](/guide/migration#behavior-differences), and consider reporting it upstream.
+- **Bugs.** If upstream has a bug, fix it here, add it to the bug list in `UPSTREAM.md` and to the [migration guide](/guide/migration#behavior-differences), and consider reporting it upstream.
 
 ## Locales
 

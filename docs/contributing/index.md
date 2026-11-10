@@ -52,7 +52,7 @@ Endpoint methods are plain objects of functions typed with `this: ClientContext`
 
 ## Conventions
 
-- **Same results as ytmusicapi.** Keep upstream's result keys and nesting, including its snake_case keys. Deviations must be bug fixes, and each goes in `PLAN.md`'s bug list and the [migration guide](/guide/migration#behavior-differences).
+- **Same results as ytmusicapi.** Keep upstream's result keys and nesting, including its snake_case keys. Deviations must be bug fixes, and each goes in the bug list in `UPSTREAM.md` and the [migration guide](/guide/migration#behavior-differences).
 - **Python semantics, ported carefully.** `src/parsers/py.ts` has helpers for the places where Python and JavaScript differ (truthiness of `[]`/`{}`, `in`, negative indices). Absent values are `null`.
 - **Writes are never retried.** Pass `retry: false` for any request that changes state.
 - **Every public export has TSDoc.** TypeDoc fails the docs build otherwise.
@@ -64,6 +64,6 @@ When a method throws `YTMusicNavigationError` or returns wrong data, include:
 
 1. the method and its arguments
 2. the full error message
-3. if you can, a [recorded response](/guide/advanced#recording-responses) from a **signed-out** client
+3. if you can, a [recorded response](/guide/testing#record-real-responses) from a **signed-out** client
 
 Never attach `browser.json`, cookies or request headers.

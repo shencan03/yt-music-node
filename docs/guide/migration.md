@@ -99,7 +99,7 @@ These are deliberate fixes of upstream bugs. Where results differ, the port's ou
 | Auth input without a cookie | a misleading error about another auth type | says what's missing |
 | Missing optional values | `None` | `null` |
 
-The full list, with the upstream source location of each bug, is in the repository's `PLAN.md`.
+The full list, with the upstream source location of each bug, is in the repository's [`UPSTREAM.md`](https://github.com/shencan03/yt-music-node/blob/main/UPSTREAM.md#upstream-bugs-fixed-in-the-port).
 
 ## Not ported
 
