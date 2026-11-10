@@ -28,7 +28,7 @@ These come from YouTube Music itself and also affect ytmusicapi.
 
 ## Not tested live
 
-The [coverage matrix](/api/coverage) shows which suites call each method. These have no live test:
+The [coverage matrix](/contributing/coverage) shows which suites call each method. These have no live test:
 
 - **Brand accounts** (`user` option). The code follows upstream, but no live test runs with a brand account yet.
 - **`setTasteProfile`** and **`joinCollaborativePlaylist`**: tested offline, against a fake server, because they can't be undone or need a second account.

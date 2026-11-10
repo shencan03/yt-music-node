@@ -11,29 +11,60 @@ npm run docs:check    # what CI checks
 ## What `docs:check` checks
 
 1. **TSDoc on every export.** TypeDoc runs with `notDocumented` validation, and warnings are errors. An undocumented export fails the build.
-2. **The coverage matrix is current, and every method is documented.** `scripts/docs-coverage.ts --check` fails if a public method has no `## methodName` entry on an API page, or if `docs/api/coverage.md` is out of date (`npm run docs:coverage` regenerates it).
+2. **The coverage matrix is current, and every method is documented.** `scripts/docs-coverage.ts --check` fails if a public method has no page at `docs/api/<area>/<methodName>.md`, or if `docs/contributing/coverage.md` is out of date (`npm run docs:coverage` regenerates it).
 3. **Every TypeScript example compiles.** `scripts/docs-typecheck.ts` extracts each ` ```ts ` block and typechecks it against the source. Blocks that use `ytm` without creating it get a `declare const ytm: YTMusic`. Put `<!-- no-check -->` on the line before a block to skip it (for example for partial snippets). Method signature blocks are skipped automatically.
 4. **No dead links.** The VitePress build fails on broken internal links.
 
-## API page entries
+## Method pages
 
-Every method gets the same shape:
+Each method has its own page, `docs/api/<area>/<methodName>.md`, with the same sections in the same order. The areas and their order are in `docs/.vitepress/api-areas.ts`. The sidebar, the area index pages and the tables on the [API overview](/api/) are generated from the pages' frontmatter, so adding a page is all it takes.
 
 ````md
-## `methodName`
+---
+title: methodName
+summary: "Short phrase for the method tables"
+auth: none # none | optional (more data when signed in) | required
+write: true # only for methods that change the account
+upstream: _name # only when the ytmusicapi name isn't the snake_case form of title
+order: 3 # position in the area
+---
 
-<MethodInfo name="methodName" auth="none" />
+# `methodName`
+
+<MethodInfo />
+
+What it does, in one or two sentences.
+
+```ts
+// a short, typed example
+```
+
+## Reference
 
 ```ts
 methodName(arg: string, options?: Options): Promise<Result>
 ```
 
-What it does, in one or two sentences.
+### Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+### Options
 
 | Option | Type | Default | Description |
 |---|---|---|---|
+| `signal` | `AbortSignal` | – | cancels the call |
 
-A short, typed example.
+### Returns
+
+A promise of [`Result`](/reference/interfaces/Result).
+
+### Errors
+
+Only the errors specific to this method.
+
+## Example output
 
 <details class="example"><summary>Example output</summary>
 
@@ -41,16 +72,12 @@ A short, typed example.
 
 </details>
 
-**Throws** … (only the errors specific to this method).
+## Coming from ytmusicapi
+
+This is `method_name` in ytmusicapi. See the [migration guide](/guide/migration).
 ````
 
-`<MethodInfo>` renders the auth badge, the test suites that call the method (read from the coverage data) and the ytmusicapi name. Props:
-
-| Prop | Values |
-|---|---|
-| `auth` | `"none"`, `"optional"` (more data when signed in), `"required"` |
-| `write` | set for methods that change the account |
-| `upstream` | the ytmusicapi name, when it isn't the snake_case form of `name` |
+`<MethodInfo />` reads `auth` and `write` from the frontmatter and renders the badges. Callouts (`::: info`, `::: warning`) go right after the example. Old links of the form `/api/<area>#<methodname>` are redirected to the method page by the theme.
 
 ## Example outputs
 

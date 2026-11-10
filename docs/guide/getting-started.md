@@ -1,51 +1,77 @@
-# Getting started
+---
+title: Your first script
+---
 
-## Install
+# Your first script
 
-::: code-group
+This page builds a small script one step at a time: search for a song, open its artist, then list one of the artist's albums. It shows the pattern you use with every part of the API: **each result carries the ids for the next call.**
 
-```sh [npm]
-npm install yt-music-node
-```
+You need the package [installed](/guide/installation). No account is needed.
 
-```sh [pnpm]
-pnpm add yt-music-node
-```
-
-```sh [yarn]
-yarn add yt-music-node
-```
-
-```sh [bun]
-bun add yt-music-node
-```
-
-<!-- no-check -->
-```ts [deno]
-import { YTMusic } from "npm:yt-music-node";
-```
-
-:::
-
-Requires Node.js 22 or later. The package has no runtime dependencies. Bun and Deno should work but are not tested.
-
-## First calls
-
-Create a client and call methods on it. Every method is async.
+## 1. Create a client
 
 ```ts
 import { YTMusic } from "yt-music-node";
 
 const ytm = new YTMusic();
+```
 
-// search the catalog
+A client holds your settings and nothing else. It's cheap to create and opens no connection. Create one and reuse it for every call.
+
+## 2. Search
+
+```ts
 const songs = await ytm.search("daft punk get lucky", { filter: "songs", limit: 5 });
+
 for (const song of songs) {
   console.log(`${song.title} – ${song.artists?.map((a) => a.name).join(", ")} (${song.duration})`);
 }
+// one line per song: title – artists (duration)
+```
 
-// follow ids from one result into the next call
-const artist = await ytm.getArtist(songs[0]!.artists![0]!.id!);
+Every method is async and returns plain objects. `filter: "songs"` limits the results to songs. Without a filter you get mixed results, and each has a `resultType` saying what it is. See [`search`](/api/search/search) for every filter.
+
+## 3. Follow an id to the artist
+
+Each song's `artists` list holds the artist's `id`. Pass it to [`getArtist`](/api/browsing/getArtist):
+
+<!-- no-check -->
+```ts
+const artistId = songs[0]?.artists?.[0]?.id;
+if (!artistId) throw new Error("no artist id");
+
+const artist = await ytm.getArtist(artistId);
+console.log(artist.name, artist.subscribers);
+```
+
+## 4. Follow an id to an album
+
+The artist page has sections (`albums`, `singles`, `videos`, …). Each item in a section has a `browseId`, which [`getAlbum`](/api/browsing/getAlbum) takes:
+
+<!-- no-check -->
+```ts
+const albumId = artist.albums?.results[0]?.browseId;
+if (albumId) {
+  const album = await ytm.getAlbum(albumId);
+  console.log(album.title, album.year);
+  console.log(album.tracks.map((t) => t.title));
+}
+```
+
+Values YouTube doesn't send are `null`, and TypeScript makes you check for them. That's why the examples use `?.`.
+
+## The whole script
+
+```ts [first-script.ts]
+import { YTMusic } from "yt-music-node";
+
+const ytm = new YTMusic();
+
+const songs = await ytm.search("daft punk get lucky", { filter: "songs", limit: 5 });
+const artistId = songs[0]?.artists?.[0]?.id;
+if (!artistId) throw new Error("no artist id");
+
+const artist = await ytm.getArtist(artistId);
 console.log(artist.name, artist.subscribers);
 
 const albumId = artist.albums?.results[0]?.browseId;
@@ -55,94 +81,37 @@ if (albumId) {
 }
 ```
 
-The client is cheap to create and holds no connection. Create one and reuse it: it caches the visitor id it fetches on its first request.
-
-### CommonJS
-
-```js
-const { YTMusic } = require("yt-music-node");
-
-(async () => {
-  const ytm = new YTMusic();
-  console.log(await ytm.getSearchSuggestions("taylor"));
-})();
-```
-
-## Options at a glance
-
-```ts
-import { YTMusic } from "yt-music-node";
-
-const ytm = new YTMusic({
-  language: "de", // language of returned text, e.g. section titles and "views"
-  location: "DE", // country for charts and availability
-  timeoutMs: 15_000, // per attempt
-  retry: 2, // retry reads on 429/5xx/network errors
-});
-```
-
-[Configuration](/guide/configuration) covers every option.
-
 ## Cancel a call
 
-Every method takes a `signal` in its options. Aborting it stops the request and any continuation requests:
-
-```ts
-const controller = new AbortController();
-setTimeout(() => controller.abort(), 5_000);
-
-const albums = await ytm.search("beatles", { filter: "albums", signal: controller.signal });
-```
-
-`AbortSignal.timeout(ms)` works too:
+Every method takes a `signal` in its options. `AbortSignal.timeout(ms)` gives a call a deadline:
 
 ```ts
 const home = await ytm.getHome({ limit: 10, signal: AbortSignal.timeout(10_000) });
 ```
 
-## Sign in
+## Sign in for your own data
 
-Library, playlists, ratings, history and uploads need an account. Save request headers from your browser once:
+Your library, playlists, ratings, history and uploads need an account. Save the request headers from your browser once:
 
 ```sh
-npx yt-music-node browser
-npx yt-music-node verify
+npx yt-music-node browser   # paste request headers from your browser
+npx yt-music-node verify    # ✓ browser auth works: signed in as …
 ```
 
-Then load them:
+Then create the client from the saved file:
 
 ```ts
 import { YTMusic } from "yt-music-node";
 
-const ytm = await YTMusic.fromAuthFile("browser.json");
-const playlists = await ytm.getLibraryPlaylists({ limit: null });
+const me = await YTMusic.fromAuthFile("browser.json");
+const playlists = await me.getLibraryPlaylists({ limit: null });
 ```
 
 The [authentication guide](/authentication/browser) walks through it step by step.
 
-## TypeScript
+## Next steps
 
-Options and results are fully typed. Import the types you need:
-
-```ts
-import { YTMusic, type SearchResult, type Album } from "yt-music-node";
-
-function trackLine(track: Album["tracks"][number]): string {
-  return `${track.trackNumber ?? "–"}. ${track.title} (${track.duration ?? "?"})`;
-}
-
-const ytm = new YTMusic();
-const album: Album = await ytm.getAlbum("MPREb_4pL8gzRtw1p");
-console.log(album.tracks.map(trackLine).join("\n"));
-
-const results: SearchResult[] = await ytm.search("eminem");
-console.log(results.map((r) => r.resultType));
-```
-
-Absent values are `null`, as Python's `None` is in ytmusicapi. TypeScript makes you handle them. The [type reference](/reference/) documents every type.
-
-## Next
-
-- [Core concepts](/guide/concepts): which id goes where, limits and pagination
-- [Recipes](/guide/recipes): complete scripts for common tasks
-- [API](/api/): every method, with real example output
+- [Core concepts](/guide/concepts): which id goes where, result shapes, limits and pagination
+- [Handling errors](/guide/errors): what can go wrong and what to catch
+- [Guides](/guide/recipes): complete scripts for common tasks
+- [API reference](/api/): every method, with real example output

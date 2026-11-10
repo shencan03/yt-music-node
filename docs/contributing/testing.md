@@ -1,6 +1,6 @@
 # Testing
 
-Four suites, from fastest to most realistic. The [coverage matrix](/api/coverage) shows which suites call each method.
+Four suites, from fastest to most realistic. The [coverage matrix](/contributing/coverage) shows which suites call each method.
 
 | Suite | Command | Network | Runs in CI |
 |---|---|---|---|
@@ -29,7 +29,7 @@ Several upstream expected outputs predate the recorded responses they belong to:
 
 To add a golden test for a layout change:
 
-1. Record the response with a [hook](/guide/advanced#recording-responses), signed out.
+1. Record the response with a [hook](/guide/testing#record-real-responses), signed out.
 2. Save it as `test/fixtures/<yyyy>_<mm>_<method>.json`.
 3. Add a test that serves it with `clientReturning(response)` and asserts on the parsed result.
 

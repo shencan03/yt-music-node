@@ -1,5 +1,6 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { defineConfig, type DefaultTheme } from "vitepress";
+import { API_AREAS } from "./api-areas";
 
 const REPO = "https://github.com/shencan03/yt-music-node";
 const pkg = JSON.parse(readFileSync(new URL("../../package.json", import.meta.url), "utf8"));
@@ -10,20 +11,48 @@ const referenceSidebar: DefaultTheme.SidebarItem[] = existsSync(referenceSidebar
   ? JSON.parse(readFileSync(referenceSidebarFile, "utf8"))
   : [];
 
+/** API method pages, read from docs/api/<area>/<method>.md frontmatter (title and order). */
+function apiSidebar(): DefaultTheme.SidebarItem[] {
+  const apiDir = new URL("../api/", import.meta.url);
+  return API_AREAS.map((area) => {
+    const dir = new URL(`${area.slug}/`, apiDir);
+    const items = readdirSync(dir)
+      .filter((file) => file.endsWith(".md") && file !== "index.md")
+      .map((file) => {
+        const frontmatter = readFileSync(new URL(file, dir), "utf8").split("---")[1] ?? "";
+        const field = (key: string) => new RegExp(`^${key}: (.+)$`, "m").exec(frontmatter)?.[1];
+        return { text: field("title") ?? file, order: Number(field("order") ?? 99), link: `/api/${area.slug}/${file.replace(/\.md$/, "")}` };
+      })
+      .sort((a, b) => a.order - b.order)
+      .map(({ text, link }) => ({ text, link }));
+    return { text: area.title, link: `/api/${area.slug}/`, collapsed: true, items };
+  });
+}
+
 const guide: DefaultTheme.SidebarItem[] = [
   {
-    text: "Guide",
+    text: "Getting started",
     items: [
       { text: "Introduction", link: "/guide/introduction" },
-      { text: "Getting started", link: "/guide/getting-started" },
+      { text: "Installation", link: "/guide/installation" },
+      { text: "Your first script", link: "/guide/getting-started" },
       { text: "Core concepts", link: "/guide/concepts" },
-      { text: "Configuration", link: "/guide/configuration" },
-      { text: "Errors", link: "/guide/errors" },
-      { text: "Recipes", link: "/guide/recipes" },
-      { text: "Advanced usage", link: "/guide/advanced" },
-      { text: "Limitations", link: "/guide/limitations" },
-      { text: "Command line", link: "/guide/cli" },
+      { text: "Handling errors", link: "/guide/errors" },
+    ],
+  },
+  {
+    text: "Guides",
+    items: [
+      { text: "Overview", link: "/guide/recipes" },
+      { text: "Search and browse", link: "/guide/search-and-browse" },
+      { text: "Library and playlists", link: "/guide/library" },
+      { text: "Upload songs", link: "/guide/uploads" },
+      { text: "Use it in a server", link: "/guide/servers" },
+      { text: "Configure the client", link: "/guide/configuration" },
+      { text: "Test your code", link: "/guide/testing" },
+      { text: "Raw requests and responses", link: "/guide/advanced" },
       { text: "Migrating from ytmusicapi", link: "/guide/migration" },
+      { text: "Limitations", link: "/guide/limitations" },
     ],
   },
   {
@@ -40,23 +69,15 @@ const guide: DefaultTheme.SidebarItem[] = [
 ];
 
 const api: DefaultTheme.SidebarItem[] = [
+  { text: "API reference", items: [{ text: "Overview", link: "/api/" }] },
+  { text: "Methods", items: apiSidebar() },
   {
-    text: "API",
+    text: "More",
     items: [
-      { text: "Overview", link: "/api/" },
-      { text: "Search", link: "/api/search" },
-      { text: "Browsing", link: "/api/browsing" },
-      { text: "Watch playlists", link: "/api/watch" },
-      { text: "Explore & charts", link: "/api/explore" },
-      { text: "Podcasts", link: "/api/podcasts" },
-      { text: "Playlists", link: "/api/playlists" },
-      { text: "Library & account", link: "/api/library" },
-      { text: "Uploads", link: "/api/uploads" },
-      { text: "Raw requests", link: "/api/raw" },
-      { text: "Coverage matrix", link: "/api/coverage" },
+      { text: "Command line", link: "/guide/cli" },
+      { text: "Types", link: "/reference/", collapsed: true, items: referenceSidebar },
     ],
   },
-  { text: "Type reference", link: "/reference/" },
 ];
 
 const contributing: DefaultTheme.SidebarItem[] = [
@@ -64,6 +85,7 @@ const contributing: DefaultTheme.SidebarItem[] = [
     text: "Contributing",
     items: [
       { text: "Development", link: "/contributing/" },
+      { text: "Coverage matrix", link: "/contributing/coverage" },
       { text: "Testing", link: "/contributing/testing" },
       { text: "Syncing with upstream", link: "/contributing/upstream" },
       { text: "Writing docs", link: "/contributing/docs" },
@@ -93,12 +115,11 @@ export default defineConfig({
     theme: { light: "github-light", dark: "github-dark" },
   },
   themeConfig: {
-    logo: "/logo.svg",
+    logo: { light: "/logo.svg", dark: "/logo-dark.svg" },
     nav: [
-      { text: "Guide", link: "/guide/introduction", activeMatch: "^/guide/" },
-      { text: "Authentication", link: "/authentication/", activeMatch: "^/authentication/" },
-      { text: "API", link: "/api/", activeMatch: "^/api/" },
-      { text: "Types", link: "/reference/", activeMatch: "^/reference/" },
+      { text: "Getting started", link: "/guide/introduction", activeMatch: "^/guide/(introduction|installation|getting-started|concepts|errors)" },
+      { text: "Guides", link: "/guide/recipes", activeMatch: "^/(guide/(recipes|search-and-browse|library|uploads|servers|configuration|testing|advanced|migration|limitations)|authentication/)" },
+      { text: "API reference", link: "/api/", activeMatch: "^/(api/|reference/|guide/cli)" },
       {
         text: `v${pkg.version}`,
         items: [
@@ -109,10 +130,11 @@ export default defineConfig({
       },
     ],
     sidebar: {
+      "/guide/cli": api,
       "/guide/": guide,
       "/authentication/": guide,
       "/api/": api,
-      "/reference/": [{ text: "Type reference", link: "/reference/", items: referenceSidebar }],
+      "/reference/": api,
       "/contributing/": contributing,
     },
     outline: { level: [2, 3] },

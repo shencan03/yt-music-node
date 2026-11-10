@@ -1,20 +1,19 @@
 /**
- * Builds the coverage matrix (docs/api/coverage.md): every public method of YTMusic, the docs page
- * that documents it and the test suites that call it. A method without docs or tests stands out.
+ * Builds the coverage matrix (docs/contributing/coverage.md): every public method of YTMusic, the docs
+ * page that documents it (docs/api/<area>/<method>.md) and the test suites that call it. A method
+ * without docs or tests stands out.
  *
- *   node scripts/docs-coverage.ts          writes docs/api/coverage.md
+ *   node scripts/docs-coverage.ts          writes docs/contributing/coverage.md
  *   node scripts/docs-coverage.ts --check  fails if the file is out of date or a method is undocumented
  */
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { dirname, join, relative } from "node:path";
+import { readFile, readdir, writeFile } from "node:fs/promises";
+import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { YTMusic } from "../src/index.ts";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const API_DIR = join(ROOT, "docs/api");
-const OUT = join(API_DIR, "coverage.md");
-/** Read by the <MethodInfo> component on the API pages. */
-const DATA = join(ROOT, "docs/.vitepress/data/coverage.json");
+const OUT = join(ROOT, "docs/contributing/coverage.md");
 
 /** Test suites, most specific first; a file belongs to the first suite whose prefix matches. */
 const SUITES = [
@@ -47,17 +46,18 @@ export function publicMethods(): string[] {
 
 export async function buildMatrix(): Promise<{
   markdown: string;
-  data: string;
   undocumented: string[];
   untested: string[];
 }> {
   const methods = publicMethods();
 
-  const pages = (await readdir(API_DIR)).filter((f) => f.endsWith(".md") && f !== "coverage.md" && f !== "index.md");
+  // one page per method: docs/api/<area>/<method>.md
   const docOf = new Map<string, string>();
-  for (const page of pages) {
-    const text = await readFile(join(API_DIR, page), "utf8");
-    for (const match of text.matchAll(/^## `?(\w+)`?/gm)) docOf.set(match[1]!, page);
+  for (const area of await readdir(API_DIR, { withFileTypes: true })) {
+    if (!area.isDirectory()) continue;
+    for (const page of await readdir(join(API_DIR, area.name))) {
+      if (page.endsWith(".md") && page !== "index.md") docOf.set(page.replace(/\.md$/, ""), `${area.name}/${page.replace(/\.md$/, "")}`);
+    }
   }
 
   const tests = await walk(join(ROOT, "test"));
@@ -75,8 +75,7 @@ export async function buildMatrix(): Promise<{
   const rows = methods
     .map((method) => {
       const page = docOf.get(method);
-      const anchor = method.toLowerCase();
-      const doc = page ? `[${page.replace(/\.md$/, "")}](./${page.replace(/\.md$/, "")}#${anchor})` : "**missing**";
+      const doc = page ? `[${page}](/api/${page})` : "**missing**";
       const suites = SUITES.map((s) => (suitesOf.get(method)!.has(s.name) ? "✓" : ""));
       return { method, row: `| \`${static_.has(method) ? "YTMusic." : ""}${method}\` | ${doc} | ${suites.join(" | ")} |` };
     })
@@ -101,36 +100,27 @@ ${rows.map((r) => r.row).join("\n")}
 
 ${methods.length} methods.
 `;
-  const data = `${JSON.stringify(
-    Object.fromEntries(methods.map((m) => [m, SUITES.map((s) => s.name).filter((s) => suitesOf.get(m)!.has(s))])),
-    null,
-    2,
-  )}\n`;
   return {
     markdown,
-    data,
     undocumented: methods.filter((m) => !docOf.has(m)),
     untested: methods.filter((m) => suitesOf.get(m)!.size === 0),
   };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const { markdown, data, undocumented, untested } = await buildMatrix();
+  const { markdown, undocumented, untested } = await buildMatrix();
   if (untested.length) console.warn(`untested: ${untested.join(", ")}`);
   if (process.argv.includes("--check")) {
     const current = await readFile(OUT, "utf8").catch(() => "");
-    const currentData = await readFile(DATA, "utf8").catch(() => "");
     const problems: string[] = [];
     if (undocumented.length) problems.push(`undocumented methods: ${undocumented.join(", ")}`);
-    if (current !== markdown || currentData !== data) {
+    if (current !== markdown) {
       problems.push("the coverage matrix is out of date; run `npm run docs:coverage`");
     }
     for (const p of problems) console.error(p);
     process.exitCode = problems.length ? 1 : 0;
   } else {
     await writeFile(OUT, markdown);
-    await mkdir(dirname(DATA), { recursive: true });
-    await writeFile(DATA, data);
     console.log(`wrote ${relative(ROOT, OUT)}${undocumented.length ? `; undocumented: ${undocumented.join(", ")}` : ""}`);
   }
 }
