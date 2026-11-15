@@ -4,7 +4,7 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.1.2] - 2026-11-15
 
 ### Fixed
 
@@ -51,5 +51,6 @@ synced from upstream commit `488dbf3` (see `UPSTREAM.md`).
   [migration guide](https://shencan03.github.io/yt-music-node/guide/migration#behavior-differences)
   lists every behavior difference.
 
+[0.1.2]: https://github.com/shencan03/yt-music-node/releases/tag/v0.1.2
 [0.1.1]: https://github.com/shencan03/yt-music-node/releases/tag/v0.1.1
 [0.1.0]: https://github.com/shencan03/yt-music-node/releases/tag/v0.1.0
