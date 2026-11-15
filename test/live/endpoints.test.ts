@@ -95,9 +95,13 @@ live("live: browsing", { timeout: 60_000 }, () => {
     expect(album.tracks.length).toBe(11);
   });
 
-  it("getSong", async () => {
+  it("getSong", async (ctx) => {
     const song = await ytm.getSong(SAMPLE_VIDEO);
-    // on failure, show why YouTube refused (e.g. a bot check on datacenter IPs)
+    // YouTube asks datacenter IPs (e.g. GitHub runners) to sign in; nothing we can fix
+    if (song.playabilityStatus?.status === "LOGIN_REQUIRED" && /not a bot/i.test(song.playabilityStatus.reason ?? "")) {
+      ctx.skip("YouTube served its bot check for this IP");
+    }
+    // on failure, show why YouTube refused
     expect(song.videoDetails?.videoId, JSON.stringify(song.playabilityStatus)).toBe(SAMPLE_VIDEO);
   });
 
