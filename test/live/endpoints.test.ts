@@ -97,7 +97,8 @@ live("live: browsing", { timeout: 60_000 }, () => {
 
   it("getSong", async () => {
     const song = await ytm.getSong(SAMPLE_VIDEO);
-    expect(song.videoDetails?.videoId).toBe(SAMPLE_VIDEO);
+    // on failure, show why YouTube refused (e.g. a bot check on datacenter IPs)
+    expect(song.videoDetails?.videoId, JSON.stringify(song.playabilityStatus)).toBe(SAMPLE_VIDEO);
   });
 
   it("getWatchPlaylist, getLyrics and getSongRelated", async () => {
