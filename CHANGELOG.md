@@ -12,6 +12,8 @@ All notable changes to this project are documented here. The format follows
   music.youtube.com's homepage now sends more than Node's default 16 KB of response headers. The
   error now says so and names the workarounds (pass `visitorData`, or set
   `NODE_OPTIONS=--max-http-header-size=65536`), and is no longer retried. Node 26 is not affected.
+- `getArtist` (and `getUser` and `getChannel`) threw `YTMusicNavigationError` when a page contained a
+  carousel without a header, which YouTube now sometimes sends. Such carousels are skipped.
 
 ## [0.1.1] - 2026-11-10
 

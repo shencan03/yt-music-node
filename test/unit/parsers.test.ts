@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { MRLIR, MTRIR } from "../../src/nav.ts";
 import { parseContentList, parseMixedContent, parsePlaylist } from "../../src/parsers/browsing.ts";
 import { isDigits, jsonEqual, pyInt, toAsciiDigits, truthy } from "../../src/parsers/py.ts";
+import { createTranslator } from "../../src/i18n/index.ts";
+import { parseChannelContents } from "../../src/parsers/i18n.ts";
 import { getSearchParams } from "../../src/parsers/search.ts";
 import { parseArtistsRuns, parseLikeStatus, parseSongRun, parseSongRuns } from "../../src/parsers/songs.ts";
 import { DOT_SEPARATOR_RUN, parseCount, parseDuration, toInt } from "../../src/parsers/utils.ts";
@@ -269,5 +271,19 @@ describe("getSearchParams", () => {
     expect(getSearchParams(null, "library", false)).toBe("agIYBA%3D%3D");
     expect(getSearchParams("albums", "library", false)).toBe("EgWKAQIYAWoKEAUQCRADEAoYBA%3D%3D");
     expect(getSearchParams(null, null, true)).toBe("EhGKAQ4IARABGAEgASgAOAFAAUICCAE%3D");
+  });
+});
+
+describe("parseChannelContents", () => {
+  it("ignores carousels without a header", () => {
+    const carousel = (header?: string) => ({
+      musicCarouselShelfRenderer: {
+        ...(header && { header: { musicCarouselShelfBasicHeaderRenderer: { title: { runs: [{ text: header }] } } } }),
+        contents: [],
+      },
+    });
+    const sections = parseChannelContents([carousel(), carousel("Albums")], createTranslator("en"));
+    expect(Object.keys(sections)).toEqual(["albums"]);
+    expect(sections.albums).toEqual({ browseId: null, results: [] });
   });
 });
