@@ -73,6 +73,7 @@ YouTube answered with an error, or didn't answer at all.
 | `status` 409 on `uploadSong` | that exact file is already uploaded |
 | `status` 429 / 5xx | rate limited or a server problem. Enable [`retry`](/guide/configuration#retries) and slow down |
 | no `status`, "Request timed out after …" | raise `timeoutMs`, or retry |
+| no `status`, "Network error: the response headers are larger than Node's limit …" | music.youtube.com's homepage sends more than 16 KB of headers, which Node 22 and 24 reject. Pass [`visitorData`](/guide/configuration#serverless-and-edge-functions), or run Node with `NODE_OPTIONS=--max-http-header-size=65536` |
 | no `status`, "Network error: …" | DNS, proxy or connectivity. See `cause` |
 
 ## `YTMusicGatedError`

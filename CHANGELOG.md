@@ -8,6 +8,10 @@ All notable changes to this project are documented here. The format follows
 
 ### Fixed
 
+- On Node 22 and 24, every request failed with `Network error: fetch failed` (`UND_ERR_HEADERS_OVERFLOW`):
+  music.youtube.com's homepage now sends more than Node's default 16 KB of response headers. The
+  error now says so and names the workarounds (pass `visitorData`, or set
+  `NODE_OPTIONS=--max-http-header-size=65536`), and is no longer retried. Node 26 is not affected.
 - `getArtist` (and `getUser` and `getChannel`) threw `YTMusicNavigationError` when a page contained a
   carousel without a header, which YouTube now sometimes sends. Such carousels are skipped.
 

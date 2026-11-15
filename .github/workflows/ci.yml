@@ -38,3 +38,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run test:live
+        env:
+          # music.youtube.com sends more than Node 24's default 16 KB of response headers
+          NODE_OPTIONS: --max-http-header-size=65536

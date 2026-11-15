@@ -126,6 +126,18 @@ describe("send", () => {
     expect(fetch.requests).toHaveLength(3);
   });
 
+  it("explains oversized response headers and does not retry them", async () => {
+    const fetch = fakeFetch(() => {
+      const overflow = Object.assign(new Error("Headers Overflow Error"), { code: "UND_ERR_HEADERS_OVERFLOW" });
+      throw new TypeError("fetch failed", { cause: overflow });
+    });
+    const error = await send(config(fetch), "https://music.youtube.com", post).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(YTMusicServerError);
+    expect((error as Error).message).toMatch(/visitorData.*--max-http-header-size=65536/);
+    expect((error as Error).cause).toBeInstanceOf(TypeError);
+    expect(fetch.requests).toHaveLength(1);
+  });
+
   it("times out each attempt", async () => {
     const fetch = fakeFetch(never);
     const promise = send(config(fetch, { timeoutMs: 20, retry: resolveRetry(0) }), "https://x", post);
