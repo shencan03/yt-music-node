@@ -45,7 +45,8 @@ export function parseChannelContents(results: readonly any[], t: Translator): Re
       .filter(
         (r) =>
           has(r, "musicCarouselShelfRenderer") &&
-          String(nav(r, [...CAROUSEL, ...CAROUSEL_TITLE]).text).toLowerCase() === categoryLocal.toLowerCase(),
+          // some carousels have no header; they can't belong to a category
+          String(nav(r, [...CAROUSEL, ...CAROUSEL_TITLE, "text"], true)).toLowerCase() === categoryLocal.toLowerCase(),
       )
       .map((r) => r.musicCarouselShelfRenderer);
     if (data.length === 0) continue;
