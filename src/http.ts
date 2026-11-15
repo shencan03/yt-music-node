@@ -72,6 +72,20 @@ export interface SendOptions {
   timeoutMs?: number | undefined;
 }
 
+const HEADERS_OVERFLOW_MESSAGE =
+  "Network error: the response headers are larger than Node's limit (http.maxHeaderSize, 16 KB by default). " +
+  "music.youtube.com sends more than that on some Node versions' fetch. Pass `visitorData` to skip the " +
+  "homepage lookup, or raise the limit with NODE_OPTIONS=--max-http-header-size=65536.";
+
+/** Whether `error` (or one of its causes) is undici's "headers too large" error. */
+function isHeadersOverflow(error: unknown): boolean {
+  for (let current = error, depth = 0; current && depth < 5; depth++) {
+    if ((current as { code?: unknown }).code === "UND_ERR_HEADERS_OVERFLOW") return true;
+    current = (current as { cause?: unknown }).cause;
+  }
+  return false;
+}
+
 const RETRYABLE_STATUS = new Set([408, 429, 500, 502, 503, 504]);
 
 export function resolveRetry(retry: number | RetryOptions | false | undefined): Required<RetryOptions> {
@@ -117,6 +131,10 @@ export async function send(config: HttpConfig, url: string, options: SendOptions
       text = await response.text();
     } catch (error) {
       if (userSignal?.aborted) throw userSignal.reason;
+      if (isHeadersOverflow(error)) {
+        // retrying can't help: the same response comes back every time
+        throw new YTMusicServerError(HEADERS_OVERFLOW_MESSAGE, { url: stripQuery(url) }, { cause: error });
+      }
       const timedOut = timeout.aborted;
       const message = timedOut
         ? `Request timed out after ${timeoutMs}ms`
